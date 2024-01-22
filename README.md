@@ -22,4 +22,9 @@ To download audio as MP3: 'download mp3'
 To display video info: 'display info'
 To end the program: 'end'
 
+## Example
+<img width="452" alt="Screenshot 2024-01-22 185459" src="https://github.com/V1R4J1/Ytapp/assets/157297705/90791b0c-b358-4000-9007-0c78536ee701">
+
+
+
 
