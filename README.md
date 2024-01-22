@@ -25,6 +25,9 @@ To end the program: 'end'
 ## Example
 <img width="452" alt="Screenshot 2024-01-22 185459" src="https://github.com/V1R4J1/Ytapp/assets/157297705/90791b0c-b358-4000-9007-0c78536ee701">
 
+### Credits
+Co created by V1R4J1 and Tejas-Kul23
+
 
 
 
