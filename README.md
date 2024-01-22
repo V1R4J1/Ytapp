@@ -1,19 +1,21 @@
-Ytapp 
+#Ytapp - YouTube Downloader and Info Viewer
+ytapp is a simple command-line application based on Pytube that allows you to download YouTube videos as both MP4 and MP3 files. Additionally, it provides the ability to display information about a YouTube video, including its title, views, upload date, and the associated channel name.
 
-Overview
-This Python application utilizes the PyTube library to provide a simple and efficient way to download videos from YouTube and extract them into both MP3 and MP4 formats. Additionally, it displays relevant information about the video's publisher.
+##Features
+Download MP4: Download YouTube videos in MP4 format with the highest available resolution.
+Download MP3: Extract and download the audio from YouTube videos in MP3 format.
+Display Video Info: View information about a YouTube video, including title, views, upload date, and channel name.
+##Requirements
+Python 3.x
+Pytube library (pip install pytube)
+##Usage
+Clone the repository or download the ytapp.py file.
+Install the required dependencies: pip install pytube.
+Run the application: python ytapp.py.
+##Commands
+To download a video as MP4: 'download mp4'
+To download audio as MP3: 'download mp3'
+To display video info: 'display info'
+To end the program: 'end'
 
-Prequisites:
-Before running this file, make sure you have installed:
-1. Pytube
-2. RegEx
-
-Usage:
-To download as mp4 type something along the lines of "download mp4", key emphasis on your input starting with download and ending as mp4
-
-Same goes for mp3 downloading as well
-
-To view video info input "display info"
-
-To end the script either ctrl C or just type in end
 
