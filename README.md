@@ -11,7 +11,7 @@ ytapp is a simple command-line application based on Pytube that allows you to do
 
 ## Requirements
 Python 3.x
-Pytube library (pip install pytube)
+Pytube library (pip install pytube) -> Specified in requirements.txt
 
 ## Usage
 Clone the repository or download the ytapp.py file.
@@ -19,12 +19,14 @@ Install the required dependencies: pip install pytube.
 Run the application: python ytapp.py.
 
 ## Commands
-**To download a video as MP4:** 'download mp4'
+**To download a video as MP4:** 'download mp4 (url)'
 
-**To download audio as MP3:** 'download mp3'
+**To download audio as MP3:** 'download mp3 (url)'
 
-**To display video info:** 'display info'
+**To display video info:** 'display info (url)'
 
+**To view all commands and their use cases:** 'help'
+ 
 **To end the program:** 'end'
 
 ## Example
