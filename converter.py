@@ -2,6 +2,7 @@ from pytube import YouTube, Channel
 import re
 import os
 
+LINK_PATTERN = r"(?<=v=)[a-zA-Z0-9_-]{11}"
 
 #Function for getting MP4 progressive video files
 def mp4download(url):
@@ -54,32 +55,53 @@ def info(url):
     print(f"Upload Date: {yt.publish_date}")
     print(f"Channel Name: {c.channel_name}")
 
-url = 0
-p = True
-while p == True:
-    #User input (Call functions, input urls, etc)
-    user_input = input("YtApp: ")
+def display_commands():
+    # Displays all possible commands and their use cases 
+    print('\n--------------------HELP--------------------\n')
+    print('Download mp3/mp4 file for a YT vid: download <filetype> <url>')
+    print('Display info about YT vid: display info <url>')
+    print('help: Provide info about commands, you just did it!')
+    print('end: Quits the app')
+    print('\n--------------------HELP--------------------\n')
 
-    #Checks if its a youtube url
-    link_pattern = r"(?<=v=)[a-zA-Z0-9_-]{11}"
-    x = re.search(link_pattern, user_input)
-    if x:
-        url = user_input
-        continue
-    
-    #Checks for function calls
-    formatted_input = str.lower(user_input)
-    y = re.search("^download.*mp4$", formatted_input)
-    z = re.search("^download.*mp3$", formatted_input)
-    n = re.search("^display.*info$", formatted_input)
+# Boilerplate
+if __name__ == '__main__':
+    # Runs a loop, app ends when broken away from this function
+    while True:
+        # Get User input
+        user_input = input('YtApp: ')
+        # Separate input command into individual words, stored as a list
+        command_word_arr = user_input.split()
 
-    if y:
-        mp4download(url)
-    elif z:
-        mp3download(url)
-    elif n:
-        info(url)
-    elif str.lower(user_input) == "end":
-        p = False
-    else:
-        print("Please input a channel URL or refer to the readme file to check how to format your inputs")
+        # Validate appropriate command length
+        if len(command_word_arr) > 3 or len(command_word_arr) < 1:
+            print("Invalid command length, use the command 'help' for assistance")
+            continue
+
+        # Check for help and quit commands
+        elif len(command_word_arr) == 1:
+            if user_input == 'help':
+                display_commands() # Displays all possible commands and their uses
+            elif user_input == 'end':
+                break # Quits app
+            else:
+                print("Invalid one word command, use the command 'help' for assistance")
+                continue
+        elif re.search(LINK_PATTERN, command_word_arr[-1]): # Checks whether a YT url has been entered
+            url = command_word_arr[-1]
+            if command_word_arr[0] == 'download': # Download a new yt vid
+                if command_word_arr[1].lower() == 'mp3':
+                    mp3download(url) # Audio
+                elif command_word_arr[1].lower() == 'mp4':
+                    mp4download(url) # Video
+                else:
+                    print("Invalid filetype, use the command 'help' for assistance")
+                    continue
+            elif command_word_arr[0] == 'display' and command_word_arr[1] == 'info':
+                info(url) # Display YT vid info
+            else:
+                print("Invalid yt vid command, use the command 'help' for assistance")
+                continue
+        else:
+            print("Invalid command, use the command 'help' for assistance")
+            continue
