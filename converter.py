@@ -56,7 +56,7 @@ def info(url):
     print(f"Channel Name: {c.channel_name}")
 
 def display_commands():
-
+    # Displays all possible commands and their use cases 
     print('\n--------------------HELP--------------------\n')
     print('Download mp3/mp4 file for a YT vid: download <filetype> <url>')
     print('Display info about YT vid: display info <url>')
@@ -64,36 +64,43 @@ def display_commands():
     print('end: Quits the app')
     print('\n--------------------HELP--------------------\n')
 
+# Boilerplate
 if __name__ == '__main__':
+    # Runs a loop, app ends when broken away from this function
     while True:
+        # Get User input
         user_input = input('YtApp: ')
+        # Separate input command into individual words, stored as a list
         command_word_arr = user_input.split()
 
+        # Validate appropriate command length
         if len(command_word_arr) > 3 or len(command_word_arr) < 1:
-            print("Invalid command, use the command 'help' for assistance")
+            print("Invalid command length, use the command 'help' for assistance")
             continue
+
+        # Check for help and quit commands
         elif len(command_word_arr) == 1:
             if user_input == 'help':
-                display_commands()
+                display_commands() # Displays all possible commands and their uses
             elif user_input == 'end':
-                break
+                break # Quits app
             else:
-                print("Invalid command, use the command 'help' for assistance")
+                print("Invalid one word command, use the command 'help' for assistance")
                 continue
-        elif re.search(LINK_PATTERN, command_word_arr[-1]):
+        elif re.search(LINK_PATTERN, command_word_arr[-1]): # Checks whether a YT url has been entered
             url = command_word_arr[-1]
-            if command_word_arr[0] == 'download':
+            if command_word_arr[0] == 'download': # Download a new yt vid
                 if command_word_arr[1].lower() == 'mp3':
-                    mp3download(url)
+                    mp3download(url) # Audio
                 elif command_word_arr[1].lower() == 'mp4':
-                    mp4download(url)
+                    mp4download(url) # Video
                 else:
-                    print("Invalid command, use the command 'help' for assistance")
+                    print("Invalid filetype, use the command 'help' for assistance")
                     continue
             elif command_word_arr[0] == 'display' and command_word_arr[1] == 'info':
-                info(url)
+                info(url) # Display YT vid info
             else:
-                print("Invalid command, use the command 'help' for assistance")
+                print("Invalid yt vid command, use the command 'help' for assistance")
                 continue
         else:
             print("Invalid command, use the command 'help' for assistance")
